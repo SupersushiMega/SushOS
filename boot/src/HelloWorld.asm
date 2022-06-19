@@ -1,147 +1,50 @@
-;reset registers
-mov al, 0
-mov bl, 0
-mov cl, 0
-mov dl, 0
-mov ah, 0
-mov bh, 0
-mov ch, 0
-mov dh, 0
+%include "path"
+[org 0x7c00] ;memory offset
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+	mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
+	mov al, 'a'	;write newline to al
+	int 0x10	;raise general interrupt for video services
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+mov bx, antiDupString	;print anti duplication string (see definition of string for details)
+call print
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+	mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
+	mov al, 'b'	;write newline to al
+	int 0x10	;raise general interrupt for video services
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+mov bx, OS_Version
+call print
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+	mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
+	mov al, 'c'	;write newline to al
+	int 0x10	;raise general interrupt for video services
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+call print_NL
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+	mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
+	mov al, 'd'	;write newline to al
+	int 0x10	;raise general interrupt for video services
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+mov bx, msg
+call print
 
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 0x0d	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'S'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'u'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 's'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'h'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'O'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'S'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'V'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, '0'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 0x0a	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 0x0d	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'H'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'e'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'l'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'l'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'o'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, ' '	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'W'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'o'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'r'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'l'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
-
-mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
-mov al, 'd'	;write letter to be writen int lower part of register ax
-int 0x10	;raise general interrupt for video services
+	mov ah, 0x0e	;enable tty mode by writing 0x0e into higher part of ax
+	mov al, 'e'	;write newline to al
+	int 0x10	;raise general interrupt for video services
 
 ; Imfinite loop
 jmp $
+
+;when testing on pysical hardware some characters were printet multiple times after a specific amount of printed characters.
+;this will print spaces before to trigger the duplication before the first actual character is printet
+antiDupString:
+	db '              ',0x0d,0
+
+OS_Version:
+	db "SushOS V0.01",0
+	
+msg:
+	db "Hello World",0
 	
 ;fill with 510 zeros minus the size of previous code
 times 510-($-$$) db 0
