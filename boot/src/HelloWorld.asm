@@ -13,7 +13,7 @@ call print
 
 call print_NL
 
-mov bl, 0x0a
+mov bl, 0x7d
 call printHex
 
 call print_NL

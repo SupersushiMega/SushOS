@@ -1,4 +1,5 @@
-;start of print function
+;print function
+;===========================================================================================================
 ;function input is stored in bx and represents the start address of the string
 ;IMPORTANT: STRING MUST HAVE HAVE THE VALUE(NOT CHARACTER) 0 AT THE END TO INDICATE THE END OF THE STRING.
 ;Example of a correct definition:
@@ -26,9 +27,13 @@ printLoop:
 endPrint:
 	popa	;recover register states from stack
 	ret	;exit function
+;===========================================================================================================
 	
 	
-	
+;printHex function
+;===========================================================================================================
+;This function prints the value in the register bl as a hex value
+
 printHex:
 	pusha	;store current state of registers
 	
@@ -53,7 +58,7 @@ printHex:
 	cmp al, 0x0a	;compare al with 0x0a to check if a number or a letter is required
 	
 	jl highPrint	;skip letter offset if lower nibble is less than 0x0a (not a letter)
-	add al, ('A'-'9')-1	;add additional offset to make value of lower nibble point to corresponding letter
+	add al, ('A'-'9')-1	;add offset to make value of lower nibble point to corresponding letter
 	
 highPrint:
 	add al, '0'	;add offset to make value of lower nibble point to corresponding number
@@ -69,20 +74,20 @@ highPrint:
 	cmp al, 0x0a	;compare al with 0x0a to check if a number or a letter is required
 	
 	jl lowPrint	;skip letter offset if lower nibble is less than 0x0a (not a letter)
-	add al, ('A'-'9')-1	;add additional offset to make value of lower nibble point to corresponding letter
+	add al, ('A'-'9')-1	;add offset to make value of lower nibble point to corresponding letter
 	
 lowPrint:	
 	add al, '0'	;add offset to make value of lower nibble point to corresponding number
 	int 0x10	;raise general interrupt for video services
 ;===========================================================================
 	
-	
 	popa	;recover register states from stack
 	ret	;exit function
+;===========================================================================================================
 	
-	
-	
+
 ;function for going to the next line
+;===========================================================================================================
 print_NL:
 	pusha
 	
@@ -98,3 +103,4 @@ print_NL:
 	
 	popa
 	ret
+;===========================================================================================================
