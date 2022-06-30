@@ -11,6 +11,26 @@ call print_NL
 mov bx, msg
 call print
 
+call print_NL
+
+mov bl, 0x0a
+call printHex
+
+call print_NL
+
+mov bl, 0xa0
+call printHex
+
+call print_NL
+
+mov bl, 0xff
+call printHex
+
+call print_NL
+
+mov bl, 0x00
+call printHex
+
 ; Imfinite loop
 jmp $
 
